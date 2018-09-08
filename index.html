@@ -1,0 +1,1621 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=ISO-8859-1" />
+<meta name="generator" content="AsciiDoc 8.6.10" />
+<title>Delivery robot</title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+.monospaced, code, pre {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+  padding: 0;
+  margin: 0;
+}
+pre {
+  white-space: pre-wrap;
+}
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; vertical-align: text-bottom; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+
+
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install();
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+<h1>Delivery robot</h1>
+<span id="author">Paola Lorusso, Walter Mottinelli, Blerta Toska</span><br />
+<span id="revdate">22 Febbraio 2008</span>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_problema">Problema</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Il problema riguarda la consegna di posta da parte di un robot che si muove in un ambiente costituito da 16 stanze, 4 laboratori e un sistema di corridoi.</p></div>
+<div class="paragraph" id="piantina"><p><span class="image">
+<img src="images/piantina.png" alt="Piantina dell&#8217;ambiente in cui si muove il robot" />
+</span></p></div>
+<div class="paragraph"><p>L&#8217;ambiente è modellato con un grafo i cui nodi sono i laboratori, le stanze e le posizioni del corridoio davanti a ciascuna stanza.</p></div>
+<div class="paragraph"><p>Il robot è inizialmente posizionato nel laboratorio A con tutta la posta da consegnare a bordo e vi ritorna dopo aver completato il percorso di consegna.</p></div>
+<div class="paragraph"><p>Il problema di ricerca del percorso minore è risolto</p></div>
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+modellando i possibili stati del robot come nodi di un grafo;
+</p>
+</li>
+<li>
+<p>
+modellando i passaggi di stato (cioè le azioni del robot) come archi dello stesso;
+</p>
+</li>
+<li>
+<p>
+eseguendo un algoritmo di ricerca sul grafo degli stati sopra definito.
+</p>
+</li>
+</ol></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_stati_del_robot">Stati del robot</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Lo stato del robot è definito in funzione della sua posizione nell&#8217;ambiente e della posta a bordo.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Esempio di stato</div>
+<div class="paragraph"><p>Se il robot si trova nella stanza 101 e deve effettuare consegne nelle stanze 109, 117 e 131, allora la rappresentazione dello stato attuale del robot sarà</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>and(in(stanza(101)),[stanza(109),stanza(117),stanza(131)])</code></pre>
+</div></div>
+</div></div>
+<div class="paragraph"><p>Il robot può cambiare stato in due modi:</p></div>
+<div class="olist loweralpha"><ol class="loweralpha">
+<li>
+<p>
+spostandosi da una posizione ad un&#8217;altra adiacente;
+</p>
+</li>
+<li>
+<p>
+consegnando la posta nella stanza in cui si trova.
+</p>
+</li>
+</ol></div>
+<div class="paragraph"><p>I costi associati alle azioni sono determinati</p></div>
+<div class="olist loweralpha"><ol class="loweralpha">
+<li>
+<p>
+nel primo caso, dalla distanza tra le due posizioni;
+</p>
+</li>
+<li>
+<p>
+nel secondo caso, dal costo di consegna prefissato.
+</p>
+</li>
+</ol></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Esempio di azione di spostamento</div>
+<div class="paragraph"><p>Il robot si sposta da una posizione X a una posizione Y adiacente, e la posta a bordo resta inalterata.</p></div>
+<div class="paragraph"><p>In Prolog, lo stato iniziale del robot è definito come</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>and(in(X),M)</code></pre>
+</div></div>
+<div class="paragraph"><p>e lo stato finale è definito come</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>and(in(Y),M)</code></pre>
+</div></div>
+<div class="paragraph"><p>Nel grafo degli stati del robot, avremo un arco tra i due nodi se e solo se le posizioni X e Y sono adiacenti. Il costo dell&#8217;azione di spostamento tra lo stato iniziale e lo stato finale sarà pari al costo di spostamento dalla posizione X alla posizione Y.</p></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Esempio di azione di consegna</div>
+<div class="paragraph"><p>Il robot esegue una consegna nella stanza X.</p></div>
+<div class="paragraph"><p>In Prolog, lo stato iniziale del robot è definito come</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>and(in(X),M)</code></pre>
+</div></div>
+<div class="paragraph"><p>dove X è anche un elemento di M, e lo stato finale è definito come</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>and(in(X),N)</code></pre>
+</div></div>
+<div class="paragraph"><p>Nel grafo degli stati del robot, avremo un arco tra i due nodi se e solo se N è il risultato della sottrazione dell&#8217;elemento X dall&#8217;insieme M. Il costo dell&#8217;azione di consegna sarà pari ad un valore prefissato, nel nostro caso 0.5.</p></div>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_approcci_di_soluzione_del_problema">Approcci di soluzione del problema</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>La soluzione al problema di ricerca ha inizio dal predicato <code>go(\+NumeroStanze: integer, \+Interactive: integer, \+Strategy: integer, \+Stats: integer)</code>, dove</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<code>NumeroStanze</code> definisce il numero di stanze in cui consegnare la posta;
+</p>
+</li>
+<li>
+<p>
+<code>Interactive</code> è un valore numerico che definisce se il programma chiede interattivamente all&#8217;utente lo stato iniziale, e quindi posizione iniziale e posta da consegnare (<code>Interactive = 1</code>), oppure se utilizza dei valori preimpostati (<code>Interactive = 0</code>). Per comodità, l&#8217;esecuzione non interattiva del programma può essere avviata usando il predicato <code>go/3</code> che imposta di default l&#8217;argomento <code>Interactive</code> a 0;
+</p>
+</li>
+<li>
+<p>
+<code>Strategy</code> definisce la strategia di ricerca, secondo la tabella seguente, in cui <code>h</code> è la funzione euristica e ogni strategia è dettagliata nella sezione linkata.
+</p>
+</li>
+</ul></div>
+<div class="tableblock">
+<table rules="none"
+frame="hsides"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table------`-----------------------------------------------------------------------</caption>
+<col width="80" />
+<col width="822" />
+<thead>
+  <tr>
+    <th align="center">
+    Valore
+    </th>
+    <th align="left">
+    Strategia
+    </th>
+  </tr>
+</thead>
+<tbody valign="top">
+  <tr>
+    <td align="center">
+    <code>0</code>
+    </td>
+    <td align="left">
+    <a href="#best-first">Best first</a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+    <code>1</code>
+    </td>
+    <td align="left">
+    <a href="#a_star_1">A* con <code>h</code> su pos</a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+    <code>2</code>
+    </td>
+    <td align="left">
+    <a href="#a_star_2">A* con <code>h</code> su pos con precalcolo di <code>h</code></a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+    <code>3</code>
+    </td>
+    <td align="left">
+    <a href="#a_star_3">A* con <code>h</code> su pos e quantità posta a bordo con precalcolo di <code>h</code></a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+    <code>4</code>
+    </td>
+    <td align="left">
+    <a href="#a_star_4">A* con <code>h</code> su pos e quantità posta a bordo con precalcolo di <code>h</code> e uso di <code>consult</code></a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+    <code>5</code>
+    </td>
+    <td align="left">
+    <a href="#a_star_5">A* con <code>h</code> su pos e distanza posta a bordo con precalcolo di <code>h</code></a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+    <code>6</code>
+    </td>
+    <td align="left">
+    <a href="#a_star_6">A* con <code>h</code> su pos e distanza posta a bordo da pos iniziale e allo stato finale con precalcolo di <code>h</code></a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+    <code>7</code>
+    </td>
+    <td align="left">
+    <a href="#a_star_7">A* con <code>h</code> su pos e distanza posta a bordo da pos iniziale e allo stato finale con precalcolo di <code>h</code> e distanza e uso di nomi di predicato diversi</a>
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<div class="ulist"><ul>
+<li>
+<p>
+<code>Stats</code> definisce la modalità di raccolta delle statistiche:
+</p>
+</li>
+</ul></div>
+<div class="tableblock">
+<table rules="none"
+frame="hsides"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table------`-----------------------------------------------------------------------</caption>
+<col width="80" />
+<col width="822" />
+<thead>
+  <tr>
+    <th align="center">
+    Valore
+    </th>
+    <th align="left">
+    Modalità di raccolta delle statistiche
+    </th>
+  </tr>
+</thead>
+<tbody valign="top">
+  <tr>
+    <td align="center">
+    <code>0</code>
+    </td>
+    <td align="left">
+    nessuna statistica
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+    <code>1</code>
+    </td>
+    <td align="left">
+    a fine esecuzione, stampa a video il tempo di esecuzione
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+    <code>2</code>
+    </td>
+    <td align="left">
+    a fine esecuzione, stampa a video la memoria massima utilizzata
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+    <code>3</code>
+    </td>
+    <td align="left">
+    durante l&#8217;esecuzione, stampa su file la memoria attualmente utilizzata
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="best-first">Best-first</h3>
+<div class="paragraph"><p>Impiegando l&#8217;algoritmo Best-first, abbiamo osservato che la memoria utilizzata non permetteva di risolvere il problema con più di 4 consegne. Infatti, nel caso con 5 consegne la memoria del global stack usata eccedeva i limiti imposti da SWI-Prolog sul computer a nostra disposizione (33.554.432 bytes).</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">spazio di memoria utilizzato da go(5,0,2)</div>
+<div class="listingblock">
+<div class="content">
+<pre><code>globalused: 117441800</code></pre>
+</div></div>
+</div></div>
+<div class="paragraph"><p>Abbiamo quindi cominciato a pensare a possibile euristiche da utilizzare con A*.</p></div>
+</div>
+<div class="sect2">
+<h3 id="a_star_1">A* con <code>h</code> su posizione</h3>
+<div class="paragraph"><p>La prima semplice euristica che abbiamo considerato assegna a ciascun nodo del grafo un valore in funzione della distanza di Manhattan dal goal, senza considerare la posta a bordo.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Esempio di valore euristico di uno stato</div>
+<div class="paragraph"><p>Consideriamo lo stato del robot quando è nella stanza 101 e deve effettuare consegne nelle stanze 109, 117 e 131. Il rispettivo valore euristico <code>W</code> è la distanza di Manhattan della stanza 101 al laboratorio A</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>h1(in(stanza(101), W) :- distance(in(stanza(101), in(labA)), W).</code></pre>
+</div></div>
+</div></div>
+<div class="paragraph"><p>Abbiamo però osservato che non era computazionalmente efficiente ricalcolare continuamente i valori euristici, ma era più conveniente effettuare un precalcolo iniziale e salvare in memoria i valori ottenuti.</p></div>
+</div>
+<div class="sect2">
+<h3 id="a_star_2">A* versione 2: precalcoliamo <code>h</code></h3>
+<div class="paragraph"><p>Abbiamo quindi implementato un meccanismo di precalcolo dei valori euristici. I risultati hanno mostrato un evidente incremento di prestazioni:</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">complessità in tempo di go(4,1,1) e go(4,2,1)</div>
+<div class="listingblock">
+<div class="content">
+<pre><code>go(4,1,1)
+67,017,632 inferences, 59.07 CPU in 83.46 seconds (71% CPU, 1134546 Lips)
+
+go(4,2,1)
+10,609,355 inferences, 14.20 CPU in 16.68 seconds (85% CPU, 747138 Lips)</code></pre>
+</div></div>
+<div class="paragraph"><p>Per raffrontare le due strategie in relazione alle altre configurazioni di posta, vedi i grafici riassuntivi relativi al <a href="#inferenze">numero di inferenze</a>, al <a href="#tempo-cpu">tempo CPU</a> e al <a href="#tempo-totale">tempo totale</a>.</p></div>
+</div></div>
+<div class="paragraph"><p>Calcolare il valore euristico di uno stato senza considerare la posta a bordo assegna però valori euristici uguali a stati che hanno medesime posizioni ma differenti consegne da effettuare, come mostrato nell&#8217;esempio seguente.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Esempio di valore euristico di uno stato</div>
+<div class="paragraph"><p>Consideriamo lo stato del robot quando è nella stanza 101 e ha completato tutte le consegne. Il rispettivo valore euristico <code>W</code> è, come nell&#8217;esempio precedente, la distanza di Manhattan della stanza 101 al laboratorio A</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>h1(in(stanza(101), W) :- distance(in(stanza(101), in(labA)), W).</code></pre>
+</div></div>
+<div class="paragraph"><p>E' evidente però che questo stato dovrebbe avere valore euristico minore rispetto allo stato dell&#8217;esempio precedente in quanto il robot, pur trovandosi sempre nella stanza 101, nel primo caso deve ancora consegnare la posta in tre stanze, mentre in questo ha già effettuato tutte le consegne e quindi è più vicino al goal.</p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="a_star_3">A* versione 3: consideriamo la quantità di posta a bordo</h3>
+<div class="paragraph"><p>Per risolvere la contraddizione evidenziata negli esempi precedenti, abbiamo considerato una nuova euristica che somma il numero di consegne ancora da effettuare alla distanza dalla posizione attuale allo stato finale.</p></div>
+<div class="paragraph"><p>Abbiamo osservato un miglioramento di prestazioni per quanto riguarda la memoria occupata</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">complessità in spazio go(4,2,2) e go(4,3,2)</div>
+<div class="listingblock">
+<div class="content">
+<pre><code>go(4,2,2)
+globalused: 18704828
+localused: 4218272
+
+go(4,3,2)
+globalused: 11220888
+localused: 2775396</code></pre>
+</div></div>
+<div class="paragraph"><p>Per raffrontare le due strategie in relazione alle altre configurazioni di posta, vedi i grafici riassuntivi relativi all&#8217;uso del <a href="#global-stack">global stack</a> e del <a href="#local-stack">local stack</a>.</p></div>
+</div></div>
+<div class="paragraph"><p>difatti è stato possibile risolvere anche il problema con 5 consegne</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">complessità in spazio go(5,3,2)</div>
+<div class="listingblock">
+<div class="content">
+<pre><code>go(5,3,2)
+globalused: 25631572</code></pre>
+</div></div>
+</div></div>
+<div class="paragraph"><p>A fronte di questi miglioramenti, abbiamo osservato un degrado dei tempi di calcolo, probabilmente dovuto alla maggiore complessità della funzione euristica.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">complessità in tempo di go(4,2,1) e go(4,3,1)</div>
+<div class="listingblock">
+<div class="content">
+<pre><code>go(4,2,1)
+10,609,355 inferences, 14.20 CPU in 16.68 seconds (85% CPU, 747138 Lips)
+
+go(4,3,1)
+6,002,966 inferences, 59.56 CPU in 74.87 seconds (80% CPU, 100789 Lips)</code></pre>
+</div></div>
+<div class="paragraph"><p>Per raffrontare le due strategie in relazione alle altre configurazioni di posta, vedi i grafici riassuntivi relativi al <a href="#inferenze">numero di inferenze</a>, al <a href="#tempo-cpu">tempo CPU</a> e al <a href="#tempo-totale">tempo totale</a>.</p></div>
+</div></div>
+<div class="paragraph"><p>Infatti, mentre la funzione euristica precedente era valutata solo sulle posizioni e non sugli stati completi (ignorando quindi la posta a bordo in ciascuno stato), la nuova euristica viene valutata sugli stati.</p></div>
+<div class="paragraph"><p>L&#8217;euristica precedente salva in memoria tanti valori euristici quante sono le posizioni (nel nostro caso, 36), mentre la nuova euristica salva in memoria i valori di ogni stato (nel nostro caso, 36 * 2^<code>n</code> dove <code>n</code> è il numero di consegne del problema).</p></div>
+<div class="paragraph"><p>Poiché i valori euristici vengono salvati in memoria usando uno stesso predicato <code>valore_h</code>, al crescere delle asserzioni la ricerca in memoria diventa più complessa come mostrato dal profiler di SWI-Prolog.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">estratto dal profiling di go(4,2,0) e go(4,3,0)</div>
+<div class="listingblock">
+<div class="content">
+<pre><code>profile(go(4,2,0))
+valore_h/2      18,3%
+
+profile(go(4,3,0))
+valore_h/2      88,2%</code></pre>
+</div></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="a_star_4">A* versione 4: uso di <code>consult</code></h3>
+<div class="paragraph"><p>Invece di asserire direttamente i valori euristici calcolati, abbiamo provato a salvarli su file e poi successivamente a caricarli con <code>consult</code>.
+Il vantaggio osservato è stato comunque del tutto trascurabile.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">complessità in tempo di go(4,3,1) e go(4,4,1)</div>
+<div class="listingblock">
+<div class="content">
+<pre><code>go(4,3,1)
+6,002,966 inferences, 59.56 CPU in 74.87 seconds (80% CPU, 100789 Lips)
+
+go(4,4,1)
+6,169,613 inferences, 61.98 CPU in 75.14 seconds (82% CPU, 99542 Lips)</code></pre>
+</div></div>
+<div class="paragraph"><p>Per raffrontare le due strategie in relazione alle altre configurazioni di posta, vedi i grafici riassuntivi relativi al <a href="#inferenze">numero di inferenze</a>, al <a href="#tempo-cpu">tempo CPU</a> e al <a href="#tempo-totale">tempo totale</a>.</p></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">complessità in spazio di go(4,3,2) e go(4,4,2)</div>
+<div class="listingblock">
+<div class="content">
+<pre><code>go(4,3,2)
+globalused: 11220888
+localused: 2775396
+
+go(4,4,2)
+globalused: 10358912
+localused: 2775396</code></pre>
+</div></div>
+<div class="paragraph"><p>Per raffrontare le due strategie in relazione alle altre configurazioni di posta, vedi i grafici riassuntivi relativi all&#8217;uso del <a href="#global-stack">global stack</a> e del <a href="#local-stack">local stack</a>.</p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="a_star_5">A* versione 5: consideriamo la distanza delle future consegne dalla posizione attuale</h3>
+<div class="paragraph"><p>Per migliorare l&#8217;euristica precedente, abbiamo considerato anche la qualità della posta a bordo, stimata calcolando la somma delle distanze dalla posizione attuale alle stanze in cui il robot deve ancora consegnare e dividendo il risultato per il numero di consegne complessive del problema.</p></div>
+<div class="paragraph"><p>In questo modo, abbiamo osservato un miglioramento delle prestazioni sia in tempo che in spazio:</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">complessità in tempo di go(4,3,1) e go(4,5,1)</div>
+<div class="listingblock">
+<div class="content">
+<pre><code>go(4,3,1)
+6,002,966 inferences, 59.56 CPU in 74.87 seconds (80% CPU, 100789 Lips)
+
+go(4,5,1)
+5,316,281 inferences, 50.21 CPU in 63.55 seconds (79% CPU, 105881 Lips)</code></pre>
+</div></div>
+<div class="paragraph"><p>Per raffrontare le due strategie in relazione alle altre configurazioni di posta, vedi i grafici riassuntivi relativi al <a href="#inferenze">numero di inferenze</a>, al <a href="#tempo-cpu">tempo CPU</a> e al <a href="#tempo-totale">tempo totale</a>.</p></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">complessità in spazio di go(4,3,2) e go(4,5,2)</div>
+<div class="listingblock">
+<div class="content">
+<pre><code>go(4,3,2)
+globalused: 11220888
+localused: 2775396
+
+go(4,5,2)
+globalused: 8736084
+localused: 2332156</code></pre>
+</div></div>
+<div class="paragraph"><p>Per raffrontare le due strategie in relazione alle altre configurazioni di posta, vedi i grafici riassuntivi relativi all&#8217;uso del <a href="#global-stack">global stack</a> e del <a href="#local-stack">local stack</a>.</p></div>
+</div></div>
+</div>
+<div class="sect2">
+<h3 id="a_star_6">A* versione 6: consideriamo anche la distanza delle future consegne dal goal</h3>
+<div class="paragraph"><p>Sulla base delle riflessioni che ci hanno portato a definire l&#8217;euristica precedente, abbiamo deciso di realizzarne una nuova che tenesse in considerazione</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+la stima delle distanze dalla posizione attuale alle stanze in cui il robot deve ancora consegnare;
+</p>
+</li>
+<li>
+<p>
+la stima delle distanze dalle stanze in cui il robot deve ancora consegnare al goal.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>In questo modo, però, gli stati in cui il robot ha già consegnato tutta la posta avrebbero avuto valore 0. Conseguentemente, abbiamo aggiunto alle due stime precedenti anche la distanza dalla posizione attuale al goal, divisa per 100 in modo che non influenzasse eccessivamente l&#8217;euristica.</p></div>
+<div class="paragraph"><p>I risultati ottenuti erano comunque complessivamente inferiori rispetto all&#8217;euristica precedente.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">complessità in tempo di go(4,5,1) e go(4,6,1)</div>
+<div class="listingblock">
+<div class="content">
+<pre><code>go(4,5,1)
+5,316,281 inferences, 50.21 CPU in 63.55 seconds (79% CPU, 105881 Lips)
+
+go(4,6,1)
+7,446,317 inferences, 76.65 CPU in 90.25 seconds (85% CPU, 97147 Lips)</code></pre>
+</div></div>
+<div class="paragraph"><p>Per raffrontare le due strategie in relazione alle altre configurazioni di posta, vedi i grafici riassuntivi relativi al <a href="#inferenze">numero di inferenze</a>, al <a href="#tempo-cpu">tempo CPU</a> e al <a href="#tempo-totale">tempo totale</a>.</p></div>
+</div></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">complessità in spazio di go(4,5,2) e go(4,6,2)</div>
+<div class="listingblock">
+<div class="content">
+<pre><code>go(4,5,2)
+globalused: 8736084
+localused: 2332156
+
+go(4,6,2)
+globalused: 12003664
+localused: 3089012</code></pre>
+</div></div>
+<div class="paragraph"><p>Per raffrontare le due strategie in relazione alle altre configurazioni di posta, vedi i grafici riassuntivi relativi all&#8217;uso del <a href="#global-stack">global stack</a> e del <a href="#local-stack">local stack</a>.</p></div>
+</div></div>
+<div class="paragraph"><p>Eseguendo il profiling, abbiamo osservato che era elevato il tempo passato dall&#8217;interprete nella valutazione del predicato <code>valore_h</code>, che preleva dalla memoria i valori euristici precalcolati.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">estratto dal profiling di go(4,6,0)</div>
+<div class="listingblock">
+<div class="content">
+<pre><code>profile(go(4,6,0))
+valore_h/2      88,7%</code></pre>
+</div></div>
+</div></div>
+<div class="paragraph"><p>Quindi abbiamo cercato di ottimizzare ulteriormente l&#8217;euristica facendo sì che il precalcolo dei valori euristici asserisse predicati di nome diversi.</p></div>
+</div>
+<div class="sect2">
+<h3 id="a_star_7">A* versione 7: precalcoliamo la distanza e asseriamo i valori di h usando predicati con nomi diversi</h3>
+<div class="paragraph"><p>Perché l&#8217;indicizzazione automatica di Prolog sui nomi dei predicati fosse più efficace, abbiamo memorizzato i valori euristici in predicati aventi come nome una semplice rinomina della posizione.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Esempio di asserzione di un predicato con nome diverso</div>
+<div class="paragraph"><p>Nell&#8217;euristica precedente, il valore W dello stato del robot che si trova nella stanza 101 e deve effettuare consegne nelle stanze 109, 117 e 131, veniva asserito in questo modo:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>valore_h(and(in(stanza(101)),[stanza(109),stanza(117),stanza(131)]), W).</code></pre>
+</div></div>
+<div class="paragraph"><p>Nella nuova euristica, il valore W dello stesso stato viene asserito in questo modo:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>s101([stanza(109),stanza(117),stanza(131)], W).</code></pre>
+</div></div>
+<div class="paragraph"><p>dove <code>s101</code> è la rinomina di <code>stanza(101)</code>.</p></div>
+</div></div>
+<div class="paragraph"><p>Le statistiche raccolte confermano i miglioramenti previsti in tempo</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">complessità in tempo di go(4,6,1) e go(4,7,1)</div>
+<div class="listingblock">
+<div class="content">
+<pre><code>go(4,6,1)
+7,446,317 inferences, 76.65 CPU in 90.25 seconds (85% CPU, 97147 Lips)
+
+go(4,7,1)
+12,722,218 inferences, 17.64 CPU in 19.91 seconds (89% CPU, 721214 Lips)</code></pre>
+</div></div>
+<div class="paragraph"><p>Per raffrontare le due strategie in relazione alle altre configurazioni di posta, vedi i grafici riassuntivi relativi al <a href="#inferenze">numero di inferenze</a>, al <a href="#tempo-cpu">tempo CPU</a> e al <a href="#tempo-totale">tempo totale</a>.</p></div>
+</div></div>
+<div class="paragraph"><p>pur con un accettabile degrado delle prestazioni in spazio.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">complessità in spazio di go(4,6,2) e go(4,7,2)</div>
+<div class="listingblock">
+<div class="content">
+<pre><code>go(4,6,2)
+globalused: 12003664
+localused: 3089012
+
+go(4,7,2)
+globalused: 14002996
+localused: 3089012</code></pre>
+</div></div>
+<div class="paragraph"><p>Per raffrontare le due strategie in relazione alle altre configurazioni di posta, vedi i grafici riassuntivi relativi all&#8217;uso del <a href="#global-stack">global stack</a> e del <a href="#local-stack">local stack</a>.</p></div>
+</div></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_grafici_riassuntivi">Grafici riassuntivi</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Pubblichiamo i grafici delle statistiche raccolte che differenziano i risultati trovati per ciascun algoritmo impiegato nel calcolo, in funzione del numero di consegne.</p></div>
+<div class="sect2">
+<h3 id="tempo-cpu">Tempo CPU</h3>
+<div class="paragraph"><p><span class="image">
+<img src="images/grafico_cpu.png" alt="Tempo CPU" />
+</span></p></div>
+<div class="paragraph"><p>Si osserva in particolare come il precalcolo riduce drasticamente i tempi di esecuzione, ad esempio nel confronto tra la prima e la seconda versione di A*.</p></div>
+</div>
+<div class="sect2">
+<h3 id="tempo-totale">Tempo totale</h3>
+<div class="paragraph"><p><span class="image">
+<img src="images/grafico_tempo_totale.png" alt="Tempo totale" />
+</span></p></div>
+</div>
+<div class="sect2">
+<h3 id="inferenze">Numero di inferenze</h3>
+<div class="paragraph"><p><span class="image">
+<img src="images/grafico_inferenze.png" alt="Numero di inferenze" />
+</span></p></div>
+<div class="paragraph"><p>Oltre ai vantaggi evidenti del precalcolo, si osserva come euristiche più complesse richiedano un maggior numero di inferenze.</p></div>
+</div>
+<div class="sect2">
+<h3 id="global-stack">Utilizzo del global stack</h3>
+<div class="paragraph"><p><span class="image">
+<img src="images/grafico_global_stack.png" alt="Global stack" />
+</span></p></div>
+<div class="paragraph"><p>Si nota come euristiche più raffinate permettano di ridurre l&#8217;utilizzo del global stack, in quanto "guidano" in modo migliore l&#8217;algoritmo di ricerca.</p></div>
+</div>
+<div class="sect2">
+<h3 id="local-stack">Utilizzo del local stack</h3>
+<div class="paragraph"><p><span class="image">
+<img src="images/grafico_local_stack.png" alt="Local stack" />
+</span></p></div>
+</div>
+<div class="sect2">
+<h3 id="_numero_di_bytes_in_uso_nel_global_stack">Numero di bytes in uso nel global stack</h3>
+<div class="paragraph"><p>Infine, è possibile registrare in fase di esecuzione l&#8217;utilizzo della memoria impostando l&#8217;argomento <code>Stats</code> di <code>go/3</code> o <code>go/4</code> al valore 3.</p></div>
+<div class="paragraph"><p>La raccolta dei dati avviene in corrispondenza dell&#8217;inserimento di un nodo in frontiera.</p></div>
+<div class="paragraph"><p>Riportiamo a titolo di esempio il grafico ottenuto dai dati raccolti con il comando <code>go(4,0,3)</code>.</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/grafico_andamento_global_stack.png" alt="Numero di bytes in uso nel global stack" />
+</span></p></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_l_8217_approccio_em_divide_et_impera_em">L&#8217;approccio <em>divide et impera</em></h2>
+<div class="sectionbody">
+<div class="paragraph"><p>E' possibile usare un approccio del tipo <em>divide et impera</em> per risolvere efficientemente il problema.</p></div>
+<div class="paragraph"><p>Invece di applicare Best-first o A* sul grafo di tutti i possibili stati del robot, è conveniente applicarli più volte su istanze ridotte del problema.</p></div>
+<div class="paragraph"><p>Definiamo con il termine di <strong>grafo complessivo</strong> il grafo che ha come nodi tutti i possibili stati del robot e come archi le coppie di nodi rappresentanti stati collegati da un&#8217;azione di spostamento o di consegna.</p></div>
+<div class="paragraph"><p>Definiamo invece con il termine di <strong>grafo ridotto</strong> il grafo che ha come nodi i soli stati di particolare interesse del robot (ovvero lo stato iniziale, quello finale e gli stati in cui esegue una consegna). Gli archi del grafo ridotto sono invece le coppie di nodi per cui vale la relazione</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>and(in(X),[s_1, s_2, ..., s_i, ..., s_n]) ---&gt; and(in(s_i),[s_1, s_2, ..., s_i-1, s_i+1, ..., s_n])</code></pre>
+</div></div>
+<div class="paragraph"><p>Si osserva che gli archi del grafo ridotto corrispondono a cammini sul grafo complessivo.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Esempio di grafo ridotto</div>
+<div class="paragraph"><p>Il grafo che segue è il grafo ridotto del problema che ha come posizione iniziale e finale il laboratorio A, e consegne nelle stanze 109, 117 e 131.</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/grafo_euristica8.png" alt="Grafo ridotto" />
+</span></p></div>
+<div class="paragraph"><p>L&#8217;etichetta di un nodo ha come primo elemento la posizione attuale, seguito dalle stanze in cui deve ancora essere effettuata la consegna,</p></div>
+</div></div>
+<div class="paragraph"><p>E' possibile quindi calcolare i costi degli archi del grafo ridotto impiegando un algoritmo di ricerca sul grafo complessivo, definendo opportunamente lo stato iniziale e finale.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Esempio di calcolo del costo di un arco del grafo ridotto</div>
+<div class="paragraph"><p>Per calcolare il costo dell&#8217;arco dallo stato <code>and(in(labA), [stanza(109),stanza(117),stanza(131)])</code> allo stato <code>and(in(stanza(131)), [stanza(109),stanza(117)])</code>, posso ridefinire il primo stato come stato iniziale e il secondo come stato finale</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>assert( stato_iniziale(and(in(labA), [stanza(109),stanza(117),stanza(131)])) ).
+assert( trovato(and(in(stanza(109)), [stanza(117),stanza(131)])) ).</code></pre>
+</div></div>
+<div class="paragraph"><p>Posso quindi avviare l&#8217;algoritmo di ricerca (in questo caso, Best-first) sul grafo completo</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>go(3,0,0)</code></pre>
+</div></div>
+<div class="paragraph"><p>e ottenere in risposta il cammino tra i due stati e il suo costo.</p></div>
+</div></div>
+<div class="paragraph"><p>Una volta definiti i costi di tutti gli archi del grafo ridotto, è possibile applicare un algoritmo di ricerca al grafo ridotto. Ogni arco del cammino più breve sul grafo ridotto può quindi essere espanso con i cammini risultato delle prime esecuzioni dell&#8217;algoritmo di ricerca sul grafo completo, componendo in questo modo il percorso completo dallo stato iniziale allo stato finale del problema.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Esempio di espansione di un arco del grafo ridotto</div>
+<div class="paragraph"><p>Il cammino che segue è l&#8217;espansione dell&#8217;arco del grafo ridotto che congiunge lo stato <code>and(in(labA),[stanza(109),stanza(117),stanza(131)])</code> allo stato <code>and(in(stanza(131)),[stanza(109),stanza(117)])</code>.</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="images/estratto_grafo_completo.png" alt="Cammino sul grafo completo" />
+</span></p></div>
+</div></div>
+<div class="paragraph"><p>Poiché l&#8217;algoritmo di ricerca lavora su un sottografo del grafo complessivo, se ne trae vantaggio in termini sia di tempo che di memoria.</p></div>
+<div class="paragraph"><p>A riprova, abbiamo implementato l&#8217;approccio <em>divide et impera</em> con il comando <code>dei(\+NumeroStanze: integer, \+Strategy: integer, \+Stats: integer)</code> (per la descrizione dei parametri, fare riferimento a <code>go/3</code>). Abbiamo quindi eseguito delle prove utilizzando l&#8217;algoritmo Best-first per il calcolo dei cammini, ed infine abbiamo messo a confronto i risultati ottenuti con le migliori statistiche degli algoritmi precedenti:</p></div>
+<div class="sect2">
+<h3 id="_tempo_cpu">Tempo CPU</h3>
+<div class="paragraph"><p><span class="image">
+<img src="images/go_dei_tempo_cpu.png" alt="Tempo CPU" />
+</span></p></div>
+</div>
+<div class="sect2">
+<h3 id="_tempo_totale">Tempo totale</h3>
+<div class="paragraph"><p><span class="image">
+<img src="images/go_dei_tempo_totale.png" alt="Tempo totale" />
+</span></p></div>
+</div>
+<div class="sect2">
+<h3 id="_numero_di_inferenze">Numero di inferenze</h3>
+<div class="paragraph"><p><span class="image">
+<img src="images/go_dei_inferenze.png" alt="Numero di inferenze" />
+</span></p></div>
+</div>
+<div class="sect2">
+<h3 id="_utilizzo_del_global_stack">Utilizzo del global stack</h3>
+<div class="paragraph"><p><span class="image">
+<img src="images/go_dei_global_stack.png" alt="Global stack" />
+</span></p></div>
+<div class="paragraph"><p>Grazie al risparmio di memoria, con questa soluzione siamo riusciti a risolvere il problema di 8 consegne senza ampliare la dimensione predefinita del global stack.</p></div>
+</div>
+<div class="sect2">
+<h3 id="_utilizzo_del_local_stack">Utilizzo del local stack</h3>
+<div class="paragraph"><p><span class="image">
+<img src="images/go_dei_local_stack.png" alt="Local stack" />
+</span></p></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_possibili_miglioramenti">Possibili miglioramenti</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Sia per l&#8217;approccio tradizionale che per l&#8217;approccio <em>divide et impera</em>, è possibile migliorare ulteriormente le prestazioni implementando euristiche che considerino il numero di consegne effettuate lungo ogni cammino. In questo modo, è possibile ridurre ulteriormente la dimensione del grafo su cui applicare l&#8217;algoritmo di ricerca.</p></div>
+<div class="paragraph"><p>Ad esempio, si potrebbe valutare la bontà di un cammino dallo stato iniziale a ciascuna stanza in funzione delle possibilità di consegne lungo quel cammino.</p></div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Esempio di ordinamento dei cammini secondo il numero di consegne intermedie</div>
+<div class="paragraph"><p>Si consideri l&#8217;ambiente raffigurato nella <a href="#piantina">piantina</a>.</p></div>
+<div class="paragraph"><p>Poniamo di essere nel laboratorio A, di dover consegnare nelle stanze 105, 109 e 113 e di avere in memoria i cammini per ciascuna consegna.</p></div>
+<div class="paragraph"><p>Si osserva che il cammino dal laboratorio A alla stanza 109 permette la consegna anche nella stanza 105,  mentre il cammino dal laboratorio A alla stanza 113 permette un&#8217;ulteriore consegna nella stanza 109.</p></div>
+<div class="paragraph"><p>Sulla base del numero di consegne intermedie, l&#8217;euristica andrà a privilegiare il cammino che porta in stanza 113.</p></div>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_appendix_a_files_del_progetto">Appendix A: Files del progetto</h2>
+<div class="sectionbody">
+<div class="tableblock">
+<table rules="none"
+frame="hsides"
+cellspacing="0" cellpadding="4">
+<col width="274" />
+<col width="754" />
+<thead>
+  <tr>
+    <th align="left">
+    Nome file
+    </th>
+    <th align="left">
+    Descrizione
+    </th>
+  </tr>
+</thead>
+<tbody valign="top">
+  <tr>
+    <td align="left">
+    a_star.pl
+    </td>
+    <td align="left">
+    definisce la relazione di ordinamento che caratterizza A*
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    best_first.pl
+    </td>
+    <td align="left">
+    definisce la relazione di ordinamento che caratterizza Best-first
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    cerca.pl
+    </td>
+    <td align="left">
+    implementa l&#8217;algoritmo di ricerca
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    cerca2.pl
+    </td>
+    <td align="left">
+    implementa l&#8217;algoritmo di ricerca (variante per D.E.I.)
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    dei.pl
+    </td>
+    <td align="left">
+    implementa l&#8217;approccio D.E.I. al problema del delivery robot
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    delivery.pl
+    </td>
+    <td align="left">
+    implementa l&#8217;approccio tradizionale al problema del delivery robot
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    distance.pl
+    </td>
+    <td align="left">
+    implementa la distanza di Manhattan
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    euristica.pl
+    </td>
+    <td align="left">
+    definisce le possibili euristiche di A*
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    frontiera_ordinata.pl
+    </td>
+    <td align="left">
+    implementa la frontiera ordinata come coda di priorità
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    init.pl
+    </td>
+    <td align="left">
+    contiene il codice di inizializzazione del programma
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    stats.pl
+    </td>
+    <td align="left">
+    contiene il codice che implementa i contatori
+    </td>
+  </tr>
+  <tr>
+    <td align="left">
+    world.pl
+    </td>
+    <td align="left">
+    contiene il modello dell&#8217;ambiente
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_appendix_b_requisiti_di_sistema">Appendix B: Requisiti di sistema</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Il progetto richiede i seguenti software (vengono indicate anche le versioni testate):</p></div>
+<div class="tableblock">
+<table rules="none"
+frame="hsides"
+cellspacing="0" cellpadding="4">
+<col width="125" />
+<col width="102" />
+<col width="125" />
+<col width="331" />
+<thead>
+  <tr>
+    <th align="left">
+    Software
+    </th>
+    <th align="left">
+    Versione
+    </th>
+    <th align="left">
+    Importanza
+    </th>
+    <th align="left">
+    URL
+    </th>
+  </tr>
+</thead>
+<tbody valign="top">
+  <tr>
+    <td align="left">
+    SWI-Prolog
+    </td>
+    <td align="left">
+    5.6.50
+    </td>
+    <td align="left">
+    necessario
+    </td>
+    <td align="left">
+    <a href="http://www.swi-prolog.org">http://www.swi-prolog.org</a>
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated
+ 2018-09-08 17:13:14 CEST
+</div>
+</div>
+</body>
+</html>

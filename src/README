@@ -1,0 +1,28 @@
+Delivery robot
+==============
+
+Progetto di Intelligenza artificiale dell'A.A. 2007-08
+
+
+Autori
+======
+
+~ Paola Lorusso
+~ Walter Mottinelli
+~ Blerta Toska
+
+
+Istruzioni per l'uso
+====================
+
+Per eseguire il programma, caricare delivery.pl
+
+?- [delivery]
+
+e usare il comando go/3 o go/4 (per la descrizione dei parametri, vedere la documentazione nel codice o la relazione)
+
+Per eseguire la versione divide et impera del programma, caricare dei.pl
+
+?- [dei].
+
+e usare il comando dei/3 o dei/4 (per la descrizione dei parametri, vedere la documentazione nel codice o la relazione)
